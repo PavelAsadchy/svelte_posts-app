@@ -1,11 +1,18 @@
 <script>
-  import svelteLogo from './assets/svelte.svg'
-  import Counter from './lib/Counter.svelte'
+  import { Router, Route } from "svelte-routing";
+  import Navbar from './lib/Navbar.svelte';
+  import Home from './pages/Home.svelte';
+  import About from './pages/About.svelte';
 </script>
 
-<main>
-  <h1>Hello</h1>
-</main>
+<Router>
+  <Navbar/>
+
+  <div class="container">
+    <Route path="/" component={Home} />
+    <Route path="/about" component={About} />
+  </div>
+</Router>
 
 <style>
   
