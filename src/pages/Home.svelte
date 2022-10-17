@@ -47,57 +47,62 @@
   };
 </script>
 
-<div class="row">
-  <div class="col s6">
-    <PostForm on:postCreated={updatePosts} {editingPost} />
+<div class="container">
+  <div class="row">
+    <div class="col s6">
+      <PostForm
+        on:postCreated={updatePosts}
+        {editingPost}
+      />
+    </div>
+
+    <div class="col s3 limit">
+      <p>Limit of posts</p>
+      <input type="number" bind:value={postLimit} />
+      <button
+        type="button"
+        class="waves-effect waves-light btn"
+        on:click={setPostLimit}
+      >
+        Set post limit
+      </button>
+    </div>
   </div>
 
-  <div class="col s3 limit">
-    <p>Limit of posts</p>
-    <input type="number" bind:value={postLimit} />
-    <button
-      type="button"
-      class="waves-effect waves-light btn"
-      on:click={setPostLimit}
-    >
-      Set post limit
-    </button>
-  </div>
-</div>
+  <div class="row">
+    {#if !posts.length}
+      <h3>Loading posts...</h3>
+    {:else}
+      {#each posts as post (post.id)}
+        <div class="col s6">
+          <div class="card">
+            <div class="card-content">
+              <p class="card-title">{post.title}</p>
+              <p class="timestamp">{post.createdAt}</p>
+              <p>{post.body}</p>
+            </div>
 
-<div class="row">
-  {#if !posts.length}
-    <h3>Loading posts...</h3>
-  {:else}
-    {#each posts as post}
-      <div class="col s6">
-        <div class="card">
-          <div class="card-content">
-            <p class="card-title">{post.title}</p>
-            <p class="timestamp">{post.createdAt}</p>
-            <p>{post.body}</p>
-          </div>
-
-          <div class="card-action">
-            <button
-              type="button"
-              class="waves-effect waves-light btn add-btn"
-              on:click={() => editPost(post)}
-            >
-              Edit
-            </button>
-            <button
-              type="button"
-              class="waves-effect waves-light btn delete-btn"
-              on:click={() => deletePost(post.id)}
-            >
-              Delete
-            </button>
+            <div class="card-action">
+              <button
+                type="button"
+                class="waves-effect waves-light btn add-btn"
+                on:click={() => editPost(post)}
+              >
+                Edit
+              </button>
+              <button
+                type="button"
+                class="waves-effect waves-light btn delete-btn"
+                on:click={() => deletePost(post.id)}
+              >
+                Delete
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-    {/each}
-  {/if}
+      {/each}
+    {/if}
+  </div>
 </div>
 
 <style>

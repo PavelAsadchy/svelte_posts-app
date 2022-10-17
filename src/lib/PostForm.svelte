@@ -9,9 +9,7 @@
   let loading = false;
   const dispatch = createEventDispatcher();
 
-  const onFormSubmit = async event => {
-    event.preventDefault();
-
+  const onFormSubmit = async () => {
     if (!title.trim().length || !body.trim().length) return;
 
     loading = true;
@@ -41,7 +39,7 @@
     <div class="indeterminate"></div>
   </div>
 {:else}
-  <form on:submit={onFormSubmit}>
+  <form on:submit|preventDefault={onFormSubmit}>
     <div class="input-field">
       <label for="title">Title</label>
       <input type="text" id="title" bind:value={editingPost.title}/>

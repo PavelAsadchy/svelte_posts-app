@@ -3,15 +3,19 @@
   import Navbar from './lib/Navbar.svelte';
   import Home from './pages/Home.svelte';
   import About from './pages/About.svelte';
+  import Rating from './pages/Rating.svelte';
 </script>
 
 <Router>
-  <Navbar/>
+  <header>
+    <Navbar/>
+  </header>
 
-  <div class="container">
+  <main>
     <Route path="/" component={Home} />
     <Route path="/about" component={About} />
-  </div>
+    <Route path="/rate" component={Rating} />
+  </main>
 </Router>
 
 <style>
