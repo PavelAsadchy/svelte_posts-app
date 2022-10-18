@@ -4,6 +4,14 @@
   import FeedbackStats from '../lib/FeedbackStats.svelte';
 </script>
 
+<svelte:head>
+	<style>
+    main {
+      background-color: #202142;
+    }
+  </style>
+</svelte:head>
+
 <div class="rating">
   <div class="container">
     <FeedbackForm />
@@ -14,12 +22,6 @@
 
 <style>
   .rating {
-    position: absolute;
-    width: 100%;
-    height: 100%;
     padding-top: 40px;
-    background-color: #202142;
-    line-height: 1.6;
-    color: #fff;
   }
 </style>

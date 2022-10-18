@@ -22,6 +22,8 @@
 
   h4 {
     margin: 0;
+    color: #fff;
     font-size: 18px;
+    line-height: 1.6;
   }
 </style>
