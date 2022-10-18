@@ -1,6 +1,8 @@
 <script>
-  export let fbCount;
-  export let fbAverage;
+  import { feedbackStore } from '../stores';
+
+  $: fbCount = $feedbackStore.length;
+  $: fbAverage = $feedbackStore.reduce((acc, { rating }) => acc + rating, 0) / $feedbackStore.length;
 </script>
 
 <div class="feedback-stats">
