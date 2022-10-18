@@ -7,17 +7,28 @@
 </script>
 
 <Router>
-  <header>
-    <Navbar/>
-  </header>
+  <div class="page">
+    <header>
+      <Navbar/>
+    </header>
 
-  <main>
-    <Route path="/" component={Home} />
-    <Route path="/about" component={About} />
-    <Route path="/rate" component={Rating} />
-  </main>
+    <main>
+      <Route path="/" component={Home} />
+      <Route path="/rate" component={Rating} />
+      <Route path="/about" component={About} />
+    </main>
+  </div>
 </Router>
 
 <style>
-  
+  .page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  main {
+    flex-grow: 1;
+    position: relative;
+  }
 </style>

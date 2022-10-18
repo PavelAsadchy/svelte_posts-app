@@ -2,7 +2,9 @@
   import { feedbackStore } from '../stores';
 
   $: fbCount = $feedbackStore.length;
-  $: fbAverage = $feedbackStore.reduce((acc, { rating }) => acc + rating, 0) / $feedbackStore.length;
+  $: fbAverage = $feedbackStore.length
+    ? $feedbackStore.reduce((acc, { rating }) => acc + rating, 0) / $feedbackStore.length
+    : 0;
 </script>
 
 <div class="feedback-stats">
