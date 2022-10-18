@@ -46,7 +46,7 @@
 
 <style>
   .rating {
-    padding: 60px 0;
+    padding-top: 40px;
     background-color: #202142;
     line-height: 1.6;
     color: #fff;

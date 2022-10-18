@@ -46,10 +46,15 @@
     border-radius: 50%;
     transform: translate(-50%, -50%);
     cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
   }
 
   li:hover {
     background: #ff6a95;
+  }
+
+  li:hover > label {
     color: #fff;
   }
 

@@ -42,9 +42,7 @@
 </script>
 
 <FeedbackCard>
-  <header>
-    <h2>Please, rate me</h2>
-  </header>
+  <h2>Please, rate me</h2>
 
   <form on:submit|preventDefault={handleSubmit}>
     <RatingSelect on:rating-select={handleRatingSelect} />
@@ -56,7 +54,7 @@
         bind:value={text}
         on:input={handleInput}
       >
-  
+    
       <Button type="submit" disabled={btnDisabled}>Send</Button>
     </div>
 
@@ -67,12 +65,9 @@
 </FeedbackCard>
 
 <style>
-  header {
+  h2 {
     max-width: 400px;
     margin: 0 auto;
-  }
-
-  header h2 {
     font-size: 22px;
     font-weight: 600;
     text-align: center;
@@ -83,21 +78,10 @@
     padding: 8px 10px;
     display: flex;
     flex-direction: row;
-    border: 1px solid #ccc;
-    border-radius: 8px;
+    gap: 20px;
   }
 
-  input {
-    flex-grow: 2;
-    border: none;
-    font-size: 16px;
-  }
-
-  input:focus {
-    outline: none;
-  }
-
-  .message{
+  .message {
     padding-top: 10px;
     color: rebeccapurple;
     text-align: center;
