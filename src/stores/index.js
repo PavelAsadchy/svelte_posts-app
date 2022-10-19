@@ -17,3 +17,5 @@ export const feedbackStore = writable([
     text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ac.'
   },
 ]);
+
+export const heroesStore = writable([]);

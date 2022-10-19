@@ -1,13 +1,12 @@
 <script>
-  export let hero;
+  import { Link } from "svelte-routing";
 
-  $: url = hero.urls.find(({ type }) => type === 'detail');
+  export let hero;
 </script>
 
 <div class="card">
   <div class="card-image waves-effect waves-block waves-light">
     <img
-      class="activator"
       src={`${hero.thumbnail.path}.${hero.thumbnail.extension}`}
       alt={hero.name}
     >
@@ -17,7 +16,7 @@
       {hero.name}
       <i class="material-icons right">more_vert</i>
     </span>
-    <p><a href={url.url} target="_blank">Go to Origin</a></p>
+    <p><Link to={`/hero/${hero.id}`}>See details</Link></p>
   </div>
   <div class="card-reveal">
     <span class="card-title grey-text text-darken-4">

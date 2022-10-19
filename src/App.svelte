@@ -5,6 +5,7 @@
   import About from './pages/About.svelte';
   import Rating from './pages/Rating.svelte';
   import Heroes from './pages/Heroes.svelte';
+  import Hero from "./pages/Hero.svelte";
 </script>
 
 <Router>
@@ -17,6 +18,7 @@
       <Route path="/" component={Home} />
       <Route path="/rate" component={Rating} />
       <Route path="/heroes" component={Heroes} />
+      <Route path="/hero/:id" component={Hero} />
       <Route path="/about" component={About} />
     </main>
   </div>
