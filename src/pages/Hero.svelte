@@ -1,6 +1,6 @@
 <script>
-  import { onMount } from "svelte";
-  import { dataset_dev } from "svelte/internal";
+  import { onMount } from 'svelte';
+  import Spinner from '../lib/Spinner.svelte';
   import { HEROES_API_BASE_URL, HEROES_PUBLIC_KEY } from '../helpers/consts';
 
   export let id;
@@ -64,16 +64,6 @@
       </div>
     </div>
   {:else}
-    <div class="preloader-wrapper big active">
-      <div class="spinner-layer spinner-blue-only">
-        <div class="circle-clipper left">
-          <div class="circle"></div>
-        </div><div class="gap-patch">
-          <div class="circle"></div>
-        </div><div class="circle-clipper right">
-          <div class="circle"></div>
-        </div>
-      </div>
-    </div>
+    <Spinner />
   {/if}
 </div>

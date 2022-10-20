@@ -2,25 +2,34 @@
   import { onMount } from 'svelte';
   import { heroesStore } from '../stores';
   import HeroCard from '../lib/HeroCard.svelte';
+  import HeroesPagination from '../lib/HeroesPagination.svelte';
+  import Spinner from '../lib/Spinner.svelte';
   import { HEROES_API_BASE_URL, HEROES_PUBLIC_KEY } from '../helpers/consts';
 
   onMount(async () => {
-    if (!!$heroesStore.length) return;
+    if (!!$heroesStore.results.length) return;
 
+    heroesStore.update(currState => ({...currState, isLoading: true}));
     const res = await fetch(`${HEROES_API_BASE_URL}/v1/public/characters?apikey=${HEROES_PUBLIC_KEY}`);
     if (res.ok) {
       const { data } = await res.json();
-      heroesStore.update(() => [...data.results]);
+      heroesStore.update(() => ({...data, isLoading: false}));
     }
   });
 </script>
 
 <div class="container">
-  <ul>
-    {#each $heroesStore as hero (hero.id)}
-      <li><HeroCard {hero} /></li>
-    {/each}
-  </ul>
+  {#if !$heroesStore.isLoading}
+    <ul>
+      {#each $heroesStore.results as hero (hero.id)}
+        <li><HeroCard {hero} /></li>
+      {/each}
+    </ul>
+
+    <HeroesPagination />
+  {:else}
+    <Spinner />
+  {/if}
 </div>
 
 <style>

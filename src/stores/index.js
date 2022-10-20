@@ -18,4 +18,11 @@ export const feedbackStore = writable([
   },
 ]);
 
-export const heroesStore = writable([]);
+export const heroesStore = writable({
+  isLoading: true,
+  results: [],
+  count: 20,
+  limit: 20,
+  offset: 0,
+  total: null
+});
