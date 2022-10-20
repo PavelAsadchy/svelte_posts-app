@@ -2,34 +2,18 @@
   import { heroesStore } from '../stores';
   import { HEROES_API_BASE_URL, HEROES_PUBLIC_KEY } from '../helpers/consts';
 
-  $: offset = $heroesStore.offset;
-  $: totalResults = $heroesStore.total;
-  $: count = $heroesStore.count;
   $: current = Math.ceil(($heroesStore.offset + $heroesStore.count) / $heroesStore.limit);
   $: last = Math.ceil($heroesStore.total / $heroesStore.limit);
 
   const goToPage = async pageNum => {
     heroesStore.update(currState => ({...currState, isLoading: true}));
-    const res = await fetch(`${HEROES_API_BASE_URL}/v1/public/characters?offset=${$heroesStore.limit * (pageNum - 1)}&apikey=${HEROES_PUBLIC_KEY}`);
+    const res = await fetch(`${HEROES_API_BASE_URL}/v1/public/characters?${$heroesStore.search ? `nameStartsWith=${$heroesStore.search}&` : ''}offset=${$heroesStore.limit * (pageNum - 1)}&limit=${$heroesStore.limit}&apikey=${HEROES_PUBLIC_KEY}`);
     if (res.ok) {
       const { data } = await res.json();
-      heroesStore.update(() => ({...data, isLoading: false}));
+      heroesStore.update(currState => ({...data, search: currState.search, limit: currState.limit, isLoading: false}));
     }
-    console.log(pageNum);
   };
 </script>
-
-<div>{current}</div>
-
-<ul class="pagination">
-  <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-  <li class="active"><a href="#!">1</a></li>
-  <li class="waves-effect"><a href="#!">2</a></li>
-  <li class="waves-effect"><a href="#!">3</a></li>
-  <li class="waves-effect"><a href="#!">4</a></li>
-  <li class="waves-effect"><a href="#!">5</a></li>
-  <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
-</ul>
 
 <ul class="pagination">
   <li class="waves-effect">
@@ -91,6 +75,10 @@
 </ul>
 
 <style>
+  .pagination {
+    text-align: center;
+  }
+
   .pagination button {
     padding: 0 10px;
     border: none;

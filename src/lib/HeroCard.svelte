@@ -6,10 +6,12 @@
 
 <div class="card small">
   <div class="card-image waves-effect waves-block waves-light">
-    <img
-      src={`${hero.thumbnail.path}.${hero.thumbnail.extension}`}
-      alt={hero.name}
-    >
+    <Link to={`/hero/${hero.id}`}>
+      <img
+        src={`${hero.thumbnail.path}.${hero.thumbnail.extension}`}
+        alt={hero.name}
+      >
+    </Link>
   </div>
   <div class="card-content">
     <span class="card-title grey-text text-darken-4">
@@ -51,8 +53,6 @@
   .card .card-image img {
     position: absolute;
     top: unset;
-    left: 50%;
-    transform: translateX(-50%);
   }
 
   .hero-name {

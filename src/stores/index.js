@@ -21,6 +21,7 @@ export const feedbackStore = writable([
 export const heroesStore = writable({
   isLoading: true,
   results: [],
+  search: '',
   count: 20,
   limit: 20,
   offset: 0,
