@@ -8,6 +8,10 @@
   import Hero from "./pages/Hero.svelte";
 </script>
 
+<svelte:head>
+  <title>Svelte tutorial app</title>
+</svelte:head>
+
 <Router>
   <div class="page">
     <header>
